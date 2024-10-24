@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instalacija Ruby i Nodejs pomocu asdf alata | Srb Ruby</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+  <div class="container">
+    <a href="/">Pocetna strana</a>
+    <h1 class="display-4">Instalacija Ruby i Nodejs</h1>
+    <p>
+      Instaliracemo ruby na Ubuntu masini.
+      Ako nemate Ubuntu, mozete instalirati Ubuntu unutar Windowsa pomocu <a href="https://documentation.ubuntu.com/wsl/en/latest/guides/install-ubuntu-wsl2/">Windows Subsystem for Linux WSL</a> pomocu jedne komand <code>wsl --install</code>. Takodje mozete koristiti <a href="https://documentation.ubuntu.com/wsl/en/latest/tutorials/vscode/">Visual Studio Code</a> (ne treba Visual Studio, vec ovaj plavi VS Code)
+    </p>
+    <p>
+      Prvo treba izvezbati terminal komande kao sto su <code>cd</code> (change directory) <code>cp</code> (copy) i <code>ls</code> (list). Bas dobar tutorijal je na <a href="https://ubuntu.com/tutorials/command-line-for-beginners#1-overview">Ubuntu Command Line for beginners</a>
+    </p>
+    <p>
+      Instalacija ruby i nodejs se vrsi pomocu <a href="https://asdf-vm.com/">asdf</a> alata. Ajde prvo da instaliramo asdf
+
+<pre><code>
+sudo apt install curl git
+
+git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.14.1
+
+cat >> ~/.bashrc << 'HERE_DOC'
+# https://asdf-vm.com/guide/getting-started.html#_3-install-asdf
+. "$HOME/.asdf/asdf.sh"
+# install completions
+. "$HOME/.asdf/completions/asdf.bash"
+HERE_DOC
+
+# read local .ruby-version or .node-version files
+cat << 'HERE_DOC' >> ~/.asdfrc 
+legacy_version_file = yes
+HERE_DOC
+</code></pre>
+
+      Proverite da li je uspelo dodavanje u .bashrc
+
+<pre><code>
+cat ~/.bashrc
+# you should see two lines:
+# . "$HOME/.asdf/asdf.sh"
+# . "$HOME/.asdf/completions/asdf.bash"
+</code></pre>
+    </p>
+    <p>
+      Sada instaliramo node plugin i poslednju verziju node
+<pre><code>
+# add plugin
+asdf plugin add nodejs
+
+# install latest
+asdf install nodejs latest
+
+# set .tool-versions
+asdf global nodejs latest
+
+# check generated file
+cat ~/.tool-versions 
+# check node version
+node -v
+# v22.9.0
+</code></pre>
+      isto tako instaliramo ruby plugin i poslednju verziju rubija
+<pre><code>
+# add plugin
+asdf plugin add ruby
+
+# install dependencies
+sudo apt-get update
+sudo apt-get install git-core zlib1g-dev build-essential libssl-dev libreadline-dev libyaml-dev libsqlite3-dev sqlite3 libxml2-dev libxslt1-dev libcurl4-openssl-dev software-properties-common libffi-dev
+# install latest
+asdf install ruby latest
+
+# set .tool-versions
+asdf global ruby latest
+
+# check generated file
+cat ~/.tool-versions 
+# check ruby version
+ruby -v
+# ruby 3.3.5
+</code></pre>
+    </p>
+
+    Sada nam je podesen <code>ruby 3.3.5</code> i nodejs <code>v22.9.0</code>
+    na nasem sistemu. Ako u nekom folderu hocemo neku stariju verziju, npr
+    hocemo u myapp projektu da radimo sa ruby 3.0.1 i node 20.16.0
+<pre><code>
+mkdir myapp
+echo 3.0.1 > myapp/.ruby-version
+echo 20.16.0 > myapp/.node-version
+</code></pre>
+
+onda treba samo da pokrenemo asdf install
+<pre><code>
+cd myapp
+asdf install
+# Downloading node
+# Downloading ruby
+</code></pre>
+
+  </div>
+
+
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
