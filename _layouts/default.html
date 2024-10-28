@@ -3,21 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Srb Ruby</title>
+		<title>{{ page.title }} |  {{ site.title }}</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <style>
-        .hero {
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-        }
-    </style>
 </head>
 <body>
-
 <nav class="navbar navbar-expand-lg bg-light">
   <div class="container-fluid">
     <a class="navbar-brand" href="/">SRB</a>
@@ -37,23 +26,11 @@
     </div>
   </div>
 </nav>
-<div class='container'>
-<h1>Srb Ruby Team</h1>
-<p>
- Mi smo tim ljudi koje zanima programiranje, pravimo razne veb aplikacije i delimo znanje
-</p>
-<p>
-  Zajednicke offline kurseve organizujumo u Srbobranu dva puta godisnje (jesen i prolece).
-  Svakako mozete pratiti nase <a href='lekcije.html'>Lekcije</a> i online, kako bi ste bili u toku.
-</p>
-<p>
-  Cilj kursa je da se ljudi osposobe posle nekoliko meseci ucenja i da pocnu da rade na placenim klijentskim poslovima, preko nas ili samostalno.
-</p>
+  <div class="container">
+		{{ content }}
 
-</div>
-
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
