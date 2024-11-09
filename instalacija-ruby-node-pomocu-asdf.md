@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Instalacija Ruby i Nodejs pomocu asdf alata 
+title: Instalacija Ruby i Nodejs pomocu asdf alata
 ---
 
 # Instalacija Ruby i Nodejs
@@ -40,7 +40,41 @@ cat ~/.bashrc
 # . "$HOME/.asdf/completions/asdf.bash"
 ```
 
-Sada instaliramo node plugin i poslednju verziju node
+Sada instaliramo ruby plugin i poslednju verziju rubija
+
+```
+# add plugin
+asdf plugin add ruby
+
+# install dependencies
+sudo apt-get update
+sudo apt-get install git-core zlib1g-dev build-essential libssl-dev libreadline-dev libyaml-dev libsqlite3-dev sqlite3 libxml2-dev libxslt1-dev libcurl4-openssl-dev software-properties-common libffi-dev
+
+# install latest
+asdf install ruby latest
+```
+
+Mozemo videti sve instalirane i dostupne verzije pomocu
+```
+asdf list ruby
+asdf list all ruby
+```
+Preporucljivo je podesiti default verziju, npr u slucaju `bundle install` moze
+se desiti da ne prepozna koja se verzija koristi posto je build u
+`.asdf/installs/ruby` folder
+```
+# set version in .tool-versions
+asdf global ruby 3.3.5
+
+# check generated file
+cat ~/.tool-versions
+
+# check ruby version
+ruby -v
+# ruby 3.3.5
+```
+
+Slicno instaliramo node plugin i poslednju verziju node
 
 ```
 # add plugin
@@ -53,32 +87,10 @@ asdf install nodejs latest
 asdf global nodejs latest
 
 # check generated file
-cat ~/.tool-versions 
+cat ~/.tool-versions
 # check node version
 node -v
 # v22.9.0
-```
-
-isto tako instaliramo ruby plugin i poslednju verziju rubija
-
-```
-# add plugin
-asdf plugin add ruby
-
-# install dependencies
-sudo apt-get update
-sudo apt-get install git-core zlib1g-dev build-essential libssl-dev libreadline-dev libyaml-dev libsqlite3-dev sqlite3 libxml2-dev libxslt1-dev libcurl4-openssl-dev software-properties-common libffi-dev
-# install latest
-asdf install ruby latest
-
-# set .tool-versions
-asdf global ruby latest
-
-# check generated file
-cat ~/.tool-versions 
-# check ruby version
-ruby -v
-# ruby 3.3.5
 ```
 
 Sada nam je podesen <code>ruby 3.3.5</code> i nodejs <code>v22.9.0</code>
