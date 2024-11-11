@@ -4,6 +4,7 @@ title: Instalacija Ruby i Nodejs pomocu asdf alata
 ---
 # Linux command line - terminal komande
 
+
 Svaki kompjuter se mnogo lakse upravlja preko tekstualnih komadi u terminalu (onaj crni prozorcic).
 
 Terminal mozete pokrenuti tako sto stisnete Win dugme i pretrazujete Terminal ili pomocu keyboard shortcut *Ctrl+T*.
@@ -25,6 +26,7 @@ Navigation
 * `cd` (change directory), `cd ..` (idi u parent), `cd ~/Downloads` (idi u home/Downloads)
 * `mkdir folderName` (napravi folder), `mkdir -p folder1/folder2/folder3` (napravi parent foldere ako ne postoje)
 
+![Alt lopte](lopte.webp "Title lopte")
 
 File manipulation
 
