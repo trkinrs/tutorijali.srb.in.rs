@@ -16,7 +16,13 @@ Instalacija ruby i nodejs se vrsi pomocu [asdf](https://asdf-vm.com/) alata. Ajd
 <iframe width="560" height="315" src="https://www.youtube.com/embed/XSMUU5Kggww?si=geSqfnAdHGPsdWNB" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 ```
+# linux
 sudo apt install curl git
+
+# mac
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+brew install curl git
+
 
 git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.14.1
 
@@ -52,15 +58,35 @@ Sada instaliramo ruby plugin i poslednju verziju rubija
 # add plugin
 asdf plugin add ruby
 
+# mac
+brew install asdf
+asdf plugin add ruby
+
+
 # install dependencies
 sudo apt-get update
 sudo apt-get install git-core zlib1g-dev build-essential libssl-dev libreadline-dev libyaml-dev libsqlite3-dev sqlite3 libxml2-dev libxslt1-dev libcurl4-openssl-dev software-properties-common libffi-dev
+
+#mac
+brew install libyaml libffi openssl readline sqlite3 xz zlib
 
 # install latest
 asdf install ruby latest
 
 # set version in ~/.tool-versions
 asdf global ruby 3.3.5
+
+#mac
+nano ~/.zshrc
+. $(brew --prefix asdf)/asdf.sh
+source ~/.zshrc
+nano ~/.zshrc
+export PATH="$HOME/.asdf/shims:$PATH"
+source ~/.zshrc
+asdf install ruby 3.4.1
+asdf global ruby 3.4.1
+
+
 ```
 Preporucljivo je podesiti default verziju, npr u slucaju `bundle install` moze
 se desiti da ne prepozna koja se verzija koristi posto je build u
@@ -116,3 +142,5 @@ asdf install
 # Downloading ruby 3.0.1
 # Downloading node 20.16.0
 ```
+
+
