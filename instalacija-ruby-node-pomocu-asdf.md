@@ -59,6 +59,9 @@ sudo apt-get install git-core zlib1g-dev build-essential libssl-dev libreadline-
 # install latest
 asdf install ruby latest
 
+# see all versions
+asdf list all ruby
+
 # set version in ~/.tool-versions
 asdf global ruby 3.3.5
 ```
