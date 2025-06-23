@@ -15,33 +15,25 @@ Instalacija ruby i nodejs se vrsi pomocu [asdf](https://asdf-vm.com/) alata. Ajd
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/XSMUU5Kggww?si=geSqfnAdHGPsdWNB" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
+The easiest way is to download file from releases and extract to eg `.local/bin`
+Than add two lines .bash_profile or .bashrc
+
 ```
-sudo apt install curl git
+export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
+. <(asdf completion bash)
 
-git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.14.1
+```
 
-cat >> ~/.bashrc << 'HERE_DOC'
-# https://asdf-vm.com/guide/getting-started.html#_3-install-asdf
-. "$HOME/.asdf/asdf.sh"
-# install completions
-. "$HOME/.asdf/completions/asdf.bash"
-HERE_DOC
-
+You can enable legacy
+```
 # read local .ruby-version or .node-version files
-cat << 'HERE_DOC' >> ~/.asdfrc 
+cat << 'HERE_DOC' >> ~/.asdfrc
 legacy_version_file = yes
 HERE_DOC
 ```
 
-Proverite da li je uspelo dodavanje u .bashrc
-
-```
-cat ~/.bashrc
-# you should see two lines:
-# . "$HOME/.asdf/asdf.sh"
-# . "$HOME/.asdf/completions/asdf.bash"
-```
-Mozete otvoriti novi terminal, ili u istom terminalu ucitati promene u .bashrc
+Proverite da li je uspelo dodavanje u .bashrc tako sto mozete otvoriti novi
+terminal, ili u istom terminalu ucitati promene u .bashrc
 `source ~/.bashrc`.
 
 ## Instalacija ruby-a
@@ -96,6 +88,13 @@ asdf global nodejs latest
 # check node version
 node -v
 # v22.9.0
+```
+
+## Instalacija yarn
+
+```
+asdf plugin add yarn
+asdf install yarn latest
 ```
 
 ## Instalacija neke druge verzije
