@@ -15,12 +15,21 @@ Instalacija ruby i nodejs se vrsi pomocu [asdf](https://asdf-vm.com/) alata. Ajd
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/XSMUU5Kggww?si=geSqfnAdHGPsdWNB" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
-The easiest way is to download file from releases and extract to eg `.local/bin`
-Than add two lines .bash_profile or .bashrc
+The easiest way is to download file from <a href="https://github.com/asdf-vm/asdf/releases">releases</a> and extract to eg `.local/bin`
+```
+wget https://github.com/asdf-vm/asdf/releases/download/v0.18.0/asdf-v0.18.0-linux-amd64.tar.gz
+tar -xgz asdf-v0.18.0-linux-amd64.tar.gz
+mkdir ~/.local/bin
+mv asdf-v0.18.0-linux-amd64.tar.gz ~/.local/bin/asdf
+echo 'export PATH="~/.local/bin:$PATH"'
+```
+
+Than enable asdf with add two lines .bash_profile or .bashrc
 
 ```
-export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
-. <(asdf completion bash)
+echo 'export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"' >> ~/.bashrc
+echo '. <(asdf completion bash)' >> ~/.bashrc
+
 
 ```
 
