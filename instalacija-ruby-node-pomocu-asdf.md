@@ -18,10 +18,11 @@ Instalacija ruby i nodejs se vrsi pomocu [asdf](https://asdf-vm.com/) alata. Ajd
 The easiest way is to download file from <a href="https://github.com/asdf-vm/asdf/releases">releases</a> and extract to eg `.local/bin`
 ```
 wget https://github.com/asdf-vm/asdf/releases/download/v0.18.0/asdf-v0.18.0-linux-amd64.tar.gz
-tar -xgz asdf-v0.18.0-linux-amd64.tar.gz
+tar -xzf asdf-v0.18.0-linux-amd64.tar.gz
 mkdir ~/.local/bin
 mv asdf-v0.18.0-linux-amd64.tar.gz ~/.local/bin/asdf
-echo 'export PATH="~/.local/bin:$PATH"'
+chmod +x ~/.local/bin/asdf
+echo 'export PATH="~/.local/bin:$PATH"' >> ~/.bashrc
 ```
 
 Than enable asdf with add two lines .bash_profile or .bashrc
