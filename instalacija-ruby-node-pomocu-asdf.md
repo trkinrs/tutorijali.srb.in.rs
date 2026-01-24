@@ -15,7 +15,7 @@ Instalacija ruby i nodejs se vrsi pomocu [asdf](https://asdf-vm.com/) alata. Ajd
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/XSMUU5Kggww?si=geSqfnAdHGPsdWNB" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
-The easiest way is to download file from <a href="https://github.com/asdf-vm/asdf/releases">releases</a> and extract to eg `.local/bin`
+Najlakse je da se downloaduje binary <a href="https://github.com/asdf-vm/asdf/releases">releases</a> i otpakuje u `.local/bin`
 ```
 wget https://github.com/asdf-vm/asdf/releases/download/v0.18.0/asdf-v0.18.0-linux-amd64.tar.gz
 tar -xzf asdf-v0.18.0-linux-amd64.tar.gz
@@ -25,16 +25,22 @@ chmod +x ~/.local/bin/asdf
 echo 'export PATH="~/.local/bin:$PATH"' >> ~/.bashrc
 ```
 
+I moze i preko brew https://asdf-vm.com/guide/getting-started.html
+```
+brew install asdf
+```
+(stara verzija asdf je bila pisana u shell "$HOME/.asdf/asdf.sh", al sada je
+binary)
+
 Than enable asdf with add two lines .bash_profile or .bashrc
 
 ```
+cat >> ~/.bashrc << 'HERE_DOC'
 echo 'export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"' >> ~/.bashrc
 echo '. <(asdf completion bash)' >> ~/.bashrc
-
-
 ```
 
-You can enable legacy
+Omoguci stari nacin `.ruby-version` da se definise verzija
 ```
 # read local .ruby-version or .node-version files
 cat << 'HERE_DOC' >> ~/.asdfrc
@@ -127,4 +133,18 @@ cd myapp
 asdf install
 # Downloading ruby 3.0.1
 # Downloading node 20.16.0
+```
+
+Stari nacin da se podesi verzija u trenutnom shellu je
+```
+# Ne radi sa novijim binary verzijama asdf
+# asdf shell ruby 3.3.6
+```
+pa se u novim asdf verzijama koristi
+```
+export ASDF_RUBY_VERSION=3.3.6
+# ili ako hoces da se upise u lokalni-folder/.tool-versions
+asdf set ruby 3.3.6
+# provera verzije
+asdf current ruby
 ```
